@@ -11,7 +11,6 @@ const ErrorPage = ({
     error: Error &{digest?:string};
     reset: ()=>void;
 })=>{
-    console.log(error,"error");
     return (
         <div className="min-h-screen flex flex-col items-center justify-center space-y-6 ">
             <div  className="text-center space-y-4">
