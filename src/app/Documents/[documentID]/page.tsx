@@ -10,24 +10,28 @@ interface DocumentIdPageProps{
 }
 
 const DocumentIdPage = async ({params} : DocumentIdPageProps) => {
-  const {documentId} = await params;
-  const {getToken} = await auth();
-  const token = await getToken({template:"convex"}) ?? undefined;
-  if(!token){
-    throw new Error("Unauthorized");
-
+  try {
+    const {documentId} = await params;
+    const {getToken} = await auth();
+    const token = await getToken({template:"convex"}) ?? undefined;
+    if(!token){
+      console.error("Unauthorized: No token found");
+      return <div className="text-red-500 p-4">Unauthorized: No token found</div>;
+    }
+    const preloadedDocument = await preloadQuery(
+      api.documents.getById,
+      {id:documentId},
+      {token}
+    );
+    if(!preloadedDocument){
+      console.error(`Document not found: ${documentId}`);
+      return <div className="text-red-500 p-4">Document not found</div>;
+    }
+    return <Document preloadedDocument={preloadedDocument}/>;
+  } catch (error) {
+    console.error("Error in DocumentIdPage:", error);
+    return <div className="text-red-500 p-4">An unexpected error occurred. Please try again later.</div>;
   }
-  const preloadedDocument = await preloadQuery(
-    api.documents.getById,
-    {id:documentId},
-    {token}
-  );
-  if(!preloadedDocument){
-    throw new Error("Document not found");
-  }
-
-  return <Document preloadedDocument={preloadedDocument}/>;
-
 }
 
 export default DocumentIdPage
