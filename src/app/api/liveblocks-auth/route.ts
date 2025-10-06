@@ -3,6 +3,17 @@ import { ConvexHttpClient } from "convex/browser"
 import {auth,currentUser} from "@clerk/nextjs/server"
 import { api } from "../../../../convex/_generated/api";
 
+interface SessionClaimsOrg {
+  id: string;
+  rol?: string;
+  slg?: string;
+}
+
+interface SessionClaims {
+  o?: SessionClaimsOrg;
+  org_id?: string;
+  
+}
 
 const convex= new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!)
 const liveblocks=new Liveblocks({
@@ -23,17 +34,24 @@ export async function POST(req : Request){
     if(!document){
         return new Response ("Unauthorized" , {status:401}); 
     }
+    const Session = sessionClaims as SessionClaims;
     const isOwner = document.ownerId === user.id;
-    const isOrganizationId = !!(document.organizationId &&  document.organizationId === sessionClaims?.o?.id);
+    const isOrganizationId = !!(document.organizationId &&  document.organizationId === Session?.o?.id ? Session?.o?.id  : sessionClaims?.org_id);
     
     if(!isOwner && !isOrganizationId){
         return new Response ("Unauthorized" , {status:401}); 
     }
 
+
+    const name =user.fullName ?? user.primaryEmailAddress?.emailAddress??  "Anonymous ";
+    const nameToNumber = name.split("").reduce((acc,char)=> acc+char.charCodeAt(0),0);
+    const hue =Math.abs(nameToNumber) % 360; 
+    const color= `hsl(${hue },80%,60%)`;
     const session = liveblocks.prepareSession(user.id,{
         userInfo : {
-            name: user.fullName ?? "Anonymous ",
-            avatar: user.imageUrl
+            name: user.fullName ?? user.primaryEmailAddress?.emailAddress??  "Anonymous ",
+            avatar: user.imageUrl,
+            color
         },
 
     });

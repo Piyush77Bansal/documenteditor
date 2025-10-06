@@ -4,7 +4,7 @@ interface layoutProps {
 }
 const layout = ({children}:layoutProps) => {
   return (
-    <div className="felx flex-col h-full bg-red-500">
+    <div className="felx flex-col h-full">
         {children}
     </div>
   )
