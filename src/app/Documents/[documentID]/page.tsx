@@ -11,7 +11,6 @@ interface DocumentIdPageProps{
 
 const DocumentIdPage = async ({params} : DocumentIdPageProps) => {
   const {sessionClaims} = await auth();
-  console.log(sessionClaims,"sessionClaims");  
   const {documentId} = await params;
   const {getToken} = await auth();
   const token = await getToken({template:"convex"}) ?? undefined;
