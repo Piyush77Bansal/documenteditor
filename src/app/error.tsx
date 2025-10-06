@@ -20,7 +20,7 @@ const ErrorPage = ({
                      </div>
                 </div>
                 <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-gray-900">Something went wrong</h2>
+                    <h2 className="text-xl font-semibold text-gray-900">Something went wrong2</h2>
                     <p>{error.message}</p>
                 </div>
             </div>

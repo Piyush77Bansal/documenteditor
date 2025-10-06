@@ -34,7 +34,7 @@ export const RenameDialog = ({documentId,initialTitle,children} : RenameDialogPr
         e.preventDefault();
         setIsUpdating(true);
         update({id:documentId,title: title.trim() || "Untitled"})
-            .catch(()=>toast.error("Something went wrong"))
+            .catch(()=>toast.error("Something went wrong7"))
             .then(()=> toast.success("Document Updated"))
             .finally(()=>{
                 setIsUpdating(false);

@@ -33,7 +33,7 @@ const DocumentInput = ({title,id} : DocumentInputProps) => {
     setisPending(true);
     mutate({id,title:newValue})
       .then(()=>toast.success("Document Updated")).
-      catch(()=> toast.error("Something Went Wrong"))
+      catch(()=> toast.error("Something Went Wrong3"))
       .finally(()=> setisPending(false));
   })
   
@@ -46,7 +46,7 @@ const DocumentInput = ({title,id} : DocumentInputProps) => {
         toast.success("Document Updated");
         setisEditing(false);
       }).
-      catch(()=> toast.error("Something Went Wrong"))
+      catch(()=> toast.error("Something Went Wrong4"))
       .finally(()=> setisPending(false));
   }
 

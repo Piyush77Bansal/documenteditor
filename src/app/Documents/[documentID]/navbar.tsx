@@ -43,7 +43,7 @@ const Navbar = ({data}:NavbarProps) => {
         title:"Untitled Document",
         initialContent:""
     })
-    .catch(()=>toast.error("Something went wrong"))
+    .catch(()=>toast.error("Something went wrong5"))
     .then((id)=>{
         toast.success("Document Created")
         router.push(`/Documents/${id}`);

@@ -47,7 +47,7 @@ export const RemoveDialog = ({documentId,children} : RemoveDialogProps) =>{
                     onClick={(e)=>{
                         e.stopPropagation();
                         setIsRemoving(true);
-                        remove({id:documentId}).catch(()=>toast.error("Something went wrong")).then(()=>{
+                        remove({id:documentId}).catch(()=>toast.error("Something went wrong6")).then(()=>{
                             toast.success("Document Removed")
                             router.push("/")
                         }).finally(()=> setIsRemoving(false));
