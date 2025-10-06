@@ -23,7 +23,7 @@ const TemplatesGallery = () => {
   const onTemplateClick = (title:string,initialContent:string)=>{
     setisCreating(true);
     create({title,initialContent})
-      .catch(()=>toast.error("Something went wrong"))
+      .catch(()=>toast.error("Something went wrong again"))
       .then((documentId) => {
         toast.success("Document Created")
         router.push(`/Documents/${documentId}`);
