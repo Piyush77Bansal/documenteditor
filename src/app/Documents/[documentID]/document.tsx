@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
-import Editor from './editor'
-import { Toolbar } from './toolbar';
-import Navbar from './navbar';
-import { Room } from './room';
+// import Editor from './editor'
+// import { Toolbar } from './toolbar';
+// import Navbar from './navbar';
+// import { Room } from './room';
 import { api } from '../../../../convex/_generated/api';
 import { Preloaded, usePreloadedQuery } from 'convex/react';
 
