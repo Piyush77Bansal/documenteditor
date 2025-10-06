@@ -13,7 +13,7 @@ interface DocumentProps {
 }
 export const Document = ({preloadedDocument}:DocumentProps) => {
     const document = usePreloadedQuery(preloadedDocument);
-
+    console.log(document.initialContent);
   return (
     <Room >
       <div className='mih-h-screen bg-[#FAFBFD]'>
