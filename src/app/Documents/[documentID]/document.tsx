@@ -4,15 +4,18 @@ import React from 'react'
 // import { Toolbar } from './toolbar';
 // import Navbar from './navbar';
 // import { Room } from './room';
-import { api } from '../../../../convex/_generated/api';
-import { Preloaded, usePreloadedQuery } from 'convex/react';
+// import { api } from '../../../../convex/_generated/api';
+// import { Preloaded, usePreloadedQuery } from 'convex/react';
 
 
-interface DocumentProps {
-   preloadedDocument: Preloaded<typeof api.documents.getById>
-}
-export const Document = ({preloadedDocument}:DocumentProps) => {
-    const document = usePreloadedQuery(preloadedDocument);
+// interface DocumentProps {
+//    preloadedDocument: Preloaded<typeof api.documents.getById>
+// }
+
+
+//{preloadedDocument}:DocumentProps
+export const Document = () => {
+    // const document = usePreloadedQuery(preloadedDocument);
 
   return (
     // <Room >
