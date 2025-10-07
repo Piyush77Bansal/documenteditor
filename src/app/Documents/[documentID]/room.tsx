@@ -46,7 +46,7 @@ export function Room({ children }: { children: ReactNode }) {
     <LiveblocksProvider 
       authEndpoint={async ()=>{
         const endpoint = "/api/liveblocks-auth";
-        const room = params.documentId as string;
+        const room = params.documentID as string;
 
         const response = await fetch(endpoint,{
           method : "POST",
@@ -77,7 +77,7 @@ export function Room({ children }: { children: ReactNode }) {
         }));
       }}
     >
-      <RoomProvider id={params.documentId as string} initialStorage={{leftMargin:56, rightMargin:56}}>
+      <RoomProvider id={params.documentID as string} initialStorage={{leftMargin:56, rightMargin:56}}>
         <ClientSideSuspense fallback={<FullScreenLoader label="Room Loading..."/>}>
           {children}
         </ClientSideSuspense>
