@@ -6,11 +6,11 @@ import { preloadQuery } from "convex/nextjs";
 import { api } from "../../../../convex/_generated/api";
 
 interface DocumentIdPageProps{
-  params:Promise<{documentId: Id<"documents">}>;
+  params:Promise<{documentID: Id<"documents">}>;
 }
 
 const DocumentIdPage = async ({params} : DocumentIdPageProps) => {
-  const {documentId} = await params;
+  const {documentID} = await params;
   const {getToken} = await auth();
   const token = await getToken({template:"convex"}) ?? undefined;
   if(!token){
@@ -19,7 +19,7 @@ const DocumentIdPage = async ({params} : DocumentIdPageProps) => {
   }
   const preloadedDocument = await preloadQuery(
     api.documents.getById,
-    {id:documentId},
+    {id:documentID},
     {token}
   );
   if(!preloadedDocument){
